@@ -16,6 +16,10 @@ public class TestBenchMotor {
         flywheelMotor.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
+    public void setMotorZeroBehavior(DcMotor.ZeroPowerBehavior zeroBehavior) {
+        flywheelMotor.setZeroPowerBehavior(zeroBehavior);
+    }
+
     public void setMotorSpeed(double speed) {
         flywheelMotor.setPower(speed);
     }
