@@ -14,6 +14,7 @@ public class TestBenchMotor {
         ticksPerRev = flywheelMotor.getMotorType().getTicksPerRev();
         flywheelMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         flywheelMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+
     }
 
 
