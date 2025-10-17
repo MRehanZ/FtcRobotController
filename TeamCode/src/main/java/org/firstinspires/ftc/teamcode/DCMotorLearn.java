@@ -15,24 +15,22 @@ public class DCMotorLearn extends OpMode {
         bench.init(hardwareMap);
     }
 
-    int motorSpeed = 3000;
+    double motorSpeed = 0.5;
 
     @Override
     public void loop() {
          if (gamepad1.a) {
             bench.setMotorSpeed(motorSpeed);
+        } else if (!gamepad1.a) {
+            bench.setMotorSpeed(0);
         }
 
-        if (gamepad1.left_bumper) {
-            motorSpeed -= 1000;
-        } else if (gamepad1.right_bumper) {
-            motorSpeed += 1000;
-        }
+        telemetry.addData("Speed", motorSpeed);
 
-        if (gamepad1.dpad_left) {
-            bench.setMotorZeroBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        } else if (gamepad1.dpad_right) {
-            bench.setMotorZeroBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        if (gamepad1.leftBumperWasPressed()) {
+            motorSpeed -= 0.1666667;
+        } else if (gamepad1.rightBumperWasPressed()) {
+            motorSpeed += 0.1666667;
         }
 
         telemetry.addData("Motor Revs", bench.getMotorRevs());
