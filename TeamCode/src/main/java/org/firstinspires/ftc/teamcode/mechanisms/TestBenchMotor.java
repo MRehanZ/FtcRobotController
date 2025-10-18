@@ -12,7 +12,7 @@ public class TestBenchMotor {
         flywheelMotor = hwMap.get(DcMotor.class, "Flywheel");
         flywheelMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         ticksPerRev = flywheelMotor.getMotorType().getTicksPerRev();
-        flywheelMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        flywheelMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         flywheelMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
     }
