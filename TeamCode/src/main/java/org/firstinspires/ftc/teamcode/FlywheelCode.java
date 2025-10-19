@@ -16,8 +16,17 @@ public class FlywheelCode extends OpMode {
 
     @Override
     public void loop() {
-        motorSpeed = -gamepad1.left_stick_y;
-        bench.setMotorSpeed(motorSpeed);
+        if (gamepad1.a) {
+            bench.setMotorSpeed(1.0);
+        } else if (gamepad1.b) {
+            bench.setMotorSpeed(0.75);
+        } else if (gamepad1.y) {
+            bench.setMotorSpeed(0.5);
+        } else if (gamepad1.x) {
+            bench.setMotorSpeed(0.25);
+        } else {
+            bench.setMotorSpeed(0);
+        }
         telemetry.addData("Speed", motorSpeed);
         telemetry.addData("Motor Revs", bench.getMotorRevs());
     }
