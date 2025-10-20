@@ -1,0 +1,38 @@
+package org.firstinspires.ftc.teamcode.BackUpDoNotEdit;
+
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+@Disabled
+@TeleOp
+public class TeamMemberLearn extends OpMode {
+    boolean initDone;
+
+    @Override
+    public void init() {
+        telemetry.addData("Init", initDone);
+        initDone = true;
+    }
+
+    double squareInputWithSign(double input){
+        double output = input * input;
+
+        if (input < 0) {
+            output *= -1;
+        }
+        return output;
+    }
+
+    @Override
+    public void loop() {
+        telemetry.addData("Init", initDone);
+
+        double yAsis = gamepad1.left_stick_y;
+
+        telemetry.addData("Lest Stick Normal", yAsis);
+
+        yAsis = squareInputWithSign(yAsis);
+        telemetry.addData("Left Stick Modified", yAsis);
+    }
+}
