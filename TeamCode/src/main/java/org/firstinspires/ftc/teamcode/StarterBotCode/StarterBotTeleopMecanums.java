@@ -230,9 +230,13 @@ public class StarterBotTeleopMecanums extends OpMode {
         rightBackPower = (forward + strafe - rotate) / denominator;
 
         leftFrontDrive.setPower(leftFrontPower);
+        telemetry.addData("Front Left", leftFrontPower);
         rightFrontDrive.setPower(rightFrontPower);
+        telemetry.addData("Front Right", rightFrontPower);
         leftBackDrive.setPower(leftBackPower);
+        telemetry.addData("Back Left", leftBackPower);
         rightBackDrive.setPower(rightBackPower);
+        telemetry.addData("Back Right", rightBackPower);
 
     }
 
