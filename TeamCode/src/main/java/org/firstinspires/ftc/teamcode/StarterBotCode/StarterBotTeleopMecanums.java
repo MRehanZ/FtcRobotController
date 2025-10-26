@@ -39,8 +39,8 @@ public class StarterBotTeleopMecanums extends OpMode {
      * velocity. Here we are setting the target, and minimum velocity that the launcher should run
      * at. The minimum velocity is a threshold for determining when to fire.
      */
-    final double LAUNCHER_TARGET_VELOCITY = 1400;
-    final double LAUNCHER_MIN_VELOCITY = 1250;
+    final double LAUNCHER_TARGET_VELOCITY = 5000;
+    final double LAUNCHER_MIN_VELOCITY = 2000;
 
     // Declare OpMode members.
     private DcMotor leftFrontDrive = null;
@@ -230,14 +230,10 @@ public class StarterBotTeleopMecanums extends OpMode {
         rightBackPower = (forward + strafe - rotate) / denominator;
 
         leftFrontDrive.setPower(leftFrontPower);
-        telemetry.addData("Front Left", leftFrontPower);
         rightFrontDrive.setPower(rightFrontPower);
-        telemetry.addData("Front Right", rightFrontPower);
         leftBackDrive.setPower(leftBackPower);
-        telemetry.addData("Back Left", leftBackPower);
         rightBackDrive.setPower(rightBackPower);
-        telemetry.addData("Back Right", rightBackPower);
-
+        telemetry.addData("Front Left", leftFrontPower);
     }
 
     void launch(boolean shotRequested) {
