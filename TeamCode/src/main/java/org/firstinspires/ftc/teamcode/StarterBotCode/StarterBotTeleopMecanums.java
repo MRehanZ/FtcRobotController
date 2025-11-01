@@ -26,7 +26,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * we will also need to adjust the "PIDF" coefficients with some that are a better fit for our application.
  */
 
-@TeleOp(name = "StarterBotTeleopMecanums", group = "StarterBot")
+@TeleOp
+(name = "StarterBotTeleopMecanums", group = "StarterBot")
 //@Disabled
 public class StarterBotTeleopMecanums extends OpMode {
     final double FEED_TIME_SECONDS = 0.20; //The feeder servos run this long when a shot is requested.
@@ -39,8 +40,10 @@ public class StarterBotTeleopMecanums extends OpMode {
      * velocity. Here we are setting the target, and minimum velocity that the launcher should run
      * at. The minimum velocity is a threshold for determining when to fire.
      */
-    final double LAUNCHER_TARGET_VELOCITY = 5000;
-    final double LAUNCHER_MIN_VELOCITY = 2000;
+
+    final double LAUNCHER_TARGET_VELOCITY = 1600;
+
+    final double LAUNCHER_MIN_VELOCITY = 0;
 
     // Declare OpMode members.
     private DcMotor leftFrontDrive = null;
@@ -190,6 +193,15 @@ public class StarterBotTeleopMecanums extends OpMode {
          * Here we give the user control of the speed of the launcher motor without automatically
          * queuing a shot.
          */
+
+        if (gamepad1.xWasPressed()) {
+            //launcher.setVelocity(LAUNCHER_TARGET_VELOCITY - 100);
+            launcher.setVelocity(launcher.getVelocity() - 100);
+        } else if (gamepad1.aWasPressed()) {
+            //launcher.setVelocity(LAUNCHER_TARGET_VELOCITY + 100);
+            launcher.setVelocity(launcher.getVelocity() + 100);
+        }
+
         if (gamepad1.y) {
             launcher.setVelocity(LAUNCHER_TARGET_VELOCITY);
         } else if (gamepad1.b) { // stop flywheel
