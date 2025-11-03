@@ -41,9 +41,9 @@ public class StarterBotTeleopMecanums extends OpMode {
      * at. The minimum velocity is a threshold for determining when to fire.
      */
 
-    final double LAUNCHER_TARGET_VELOCITY = 1100;
+    final double LAUNCHER_TARGET_VELOCITY = 1600;
 
-    final double LAUNCHER_MIN_VELOCITY = 1099;
+    final double LAUNCHER_MIN_VELOCITY = 1400;
 
     // Declare OpMode members.
     private DcMotor leftFrontDrive = null;
@@ -199,7 +199,9 @@ public class StarterBotTeleopMecanums extends OpMode {
         } else if (gamepad1.aWasPressed()) {
             launcher.setVelocity(launcher.getVelocity() + 100);
         }
-
+        if (gamepad1.y) {
+            launcher.setVelocity(launcher.getVelocity());
+        }
         if (gamepad1.bWasPressed()){
             launcher.setVelocity(STOP_SPEED);
         }
