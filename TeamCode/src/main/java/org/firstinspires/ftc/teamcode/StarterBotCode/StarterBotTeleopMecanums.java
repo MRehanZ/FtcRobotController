@@ -34,16 +34,6 @@ public class StarterBotTeleopMecanums extends OpMode {
     final double STOP_SPEED = 0.0; //We send this power to the servos when we want them to stop.
     final double FULL_SPEED = 1.0;
 
-    /*
-     * When we control our launcher motor, we are using encoders. These allow the control system
-     * to read the current speed of the motor and apply more or less power to keep it at a constant
-     * velocity. Here we are setting the target, and minimum velocity that the launcher should run
-     * at. The minimum velocity is a threshold for determining when to fire.
-     */
-
-    final double LAUNCHER_TARGET_VELOCITY = 1600;
-
-    final double LAUNCHER_MIN_VELOCITY = 1400;
 
     // Declare OpMode members.
     private DcMotor leftFrontDrive = null;
@@ -214,7 +204,7 @@ public class StarterBotTeleopMecanums extends OpMode {
          * Show the state and motor powers
          */
         telemetry.addData("State", launchState);
-        telemetry.addData("motorSpeed", launcher.getVelocity());
+
 
     }
 
@@ -245,6 +235,9 @@ public class StarterBotTeleopMecanums extends OpMode {
         telemetry.addData("Front Left", leftFrontPower);
     }
 
+
+
+
     void launch(boolean shotRequested) {
         switch (launchState) {
             case IDLE:
@@ -253,10 +246,8 @@ public class StarterBotTeleopMecanums extends OpMode {
                 }
                 break;
             case SPIN_UP:
-                launcher.setVelocity(LAUNCHER_TARGET_VELOCITY);
-                if (launcher.getVelocity() > LAUNCHER_MIN_VELOCITY) {
-                    launchState = LaunchState.LAUNCH;
-                }
+                launcher.getVelocity();
+                launchState = LaunchState.LAUNCH;
                 break;
             case LAUNCH:
                 leftFeeder.setPower(FULL_SPEED);
@@ -272,5 +263,6 @@ public class StarterBotTeleopMecanums extends OpMode {
                 }
                 break;
         }
+        telemetry.addData("Get Velocity", launcher.getVelocity());
     }
 }
