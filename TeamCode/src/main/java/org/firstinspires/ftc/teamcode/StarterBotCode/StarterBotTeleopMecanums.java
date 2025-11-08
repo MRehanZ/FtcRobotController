@@ -183,6 +183,7 @@ public class StarterBotTeleopMecanums extends OpMode {
          * Here we give the user control of the speed of the launcher motor without automatically
          * queuing a shot.
          */
+
         if (gamepad1.xWasPressed()) {
             launcher.setVelocity(launcher.getVelocity() - 100);
         } else if (gamepad1.aWasPressed()) {
@@ -262,6 +263,6 @@ public class StarterBotTeleopMecanums extends OpMode {
                 }
                 break;
         }
-        telemetry.addData("Velocity", launcher.getVelocity());
+        telemetry.addData("Get Velocity", launcher.getVelocity());
     }
 }
